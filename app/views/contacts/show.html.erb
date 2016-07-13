@@ -10,8 +10,9 @@
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Contact Menu
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="contacts/new">Add a contact!</a></li>
-      <li><a href="contacts/#{@contact.id}/edit">Edit contact!</a></li>
+      <li><a href="/contacts/new">Add a contact!</a></li>
+      <li><a href="/contacts/#{@contact.id}/edit">Edit contact!</a></li>
+      <li><a href="/contacts">Back to all contacts</a></li>
       <li><%= link_to "Delete this contact", "/contacts/#{@contact.id}", method: :delete %></li>
     </ul>
   </div>
