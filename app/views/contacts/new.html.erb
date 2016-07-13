@@ -1,0 +1,21 @@
+<h2>Want to add a contact?</h2>
+
+<%= form_tag '/contacts', method: :post do%> 
+<div class= "form-group">
+<%= label_tag :first_name %>
+<%= text_field_tag :first_name, '', class: "form-control" %>
+</div>
+<div class= "form-group">
+<%= label_tag :last_name %>
+<%= text_field_tag :last_name, '', class: "form-control" %>
+</div>
+<div class= "form-group">
+<%= label_tag :email %>
+<%= text_field_tag :email, '', class: "form-control" %>
+</div>
+<div class= "form-group">
+<%= label_tag :phone_number %>
+<%= text_field_tag :phone_number, '', class: "form-control" %>
+</div>
+<%= submit_tag 'Submit contact'%>
+<%end%>

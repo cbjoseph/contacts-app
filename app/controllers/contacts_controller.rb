@@ -1,15 +1,50 @@
 class ContactsController < ApplicationController
-  def contact_list
+  def index
     @contacts = Contact.all
-    render 'contactlist.html.erb'
+    render 'index.html.erb'
   end
 
-  def add_contact
-    @first_name = params[:first_name]
-    @last_name = params[:last_name]
-    @email = params[:email]
-    @phone_number = params[:phone_number]
-    render 'form_result.html.erb'
+  def new
+    render 'new.html.erb'
+  end
+
+  def create
+    @contact = Contact.new(
+      first_name: params[:first_name],
+      last_name: params[:last_name], 
+      email: params[:email],
+      phone_number: params[:phone_number]
+    )
+    @contact.save 
+    render 'create.html.erb'
+  end
+
+  def show
+    @contact = Contact.find_by(id: params[:id])
+    render 'show.html.erb'
+  end
+
+  def edit
+    @contact = Contact.find_by(id: params[:id])
+    render 'edit.html.erb'
+  end
+
+  def update
+    @contact = Contact.find_by(id: params[:id])
+
+    @contact.update(
+      first_name: params[:first_name],
+      last_name: params[:last_name], 
+      email: params[:email],
+      phone_number: params[:phone_number]
+    )
+    render 'update.html.erb'
+  end
+
+  def destroy
+    @contact = Contact.find_by(id: params[:id])
+    @contact.destroy
+    render 'destroy.html.erb'
   end
 end
 
