@@ -1,12 +1,31 @@
 <h1>Here is my contact list:</h1>
+<div class ="container">
+<table class= "table table-striped">
+<thead>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+    <th>Email</th>
+    <th>Phone Number</th>
+    <th>View contact</th>
+    <th>Edit contact</th>
+    </tr>
+    </thead>
+    <tbody>
 <% @contacts.each do |contact|%>
-  <p><%= contact.first_name %></p>
-  <p><%= contact.last_name %></p>
-  <p><%= contact.email %></p>
-  <p><%= contact.phone_number %></p>
-  <p><a href="/contacts/<%=contact.id%>"> View just this contact </a></p>
-  <p><a href="/contacts/<%=contact.id%>/edit"> Edit contact! </a></p>
+<tr>
+  <td><%= contact.first_name %></td>
+  <td><%= contact.last_name %></td>
+  <td><%= contact.email %></td>
+  <td><%= contact.phone_number %></td>
+  <td><a href="/contacts/<%=contact.id%>"> View just this contact </a></td>
+  <td><a href="/contacts/<%=contact.id%>/edit"> Edit contact! </a></td>
+  </tr>
 <% end %>
+</tbody>
+</table>
+</div>
+
 <a href="/contacts/new">Add a contact!</a>
 
-
+  
