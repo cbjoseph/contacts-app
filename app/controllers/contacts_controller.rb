@@ -16,7 +16,8 @@ class ContactsController < ApplicationController
       phone_number: params[:phone_number]
     )
     @contact.save 
-    render 'create.html.erb'
+    flash[:success] = "Contact successfully created!"
+    redirect_to "/contacts/#{@contact.id}"
   end
 
   def show
@@ -38,13 +39,15 @@ class ContactsController < ApplicationController
       email: params[:email],
       phone_number: params[:phone_number]
     )
-    render 'update.html.erb'
+    flash[:success] = "Contact successfully updated!"
+    redirect_to "/contacts/#{@contact.id}"
   end
 
   def destroy
     @contact = Contact.find_by(id: params[:id])
     @contact.destroy
-    render 'destroy.html.erb'
+    flash[:warning] = "Contact successfully deleted!"
+    redirect_to '/contacts'
   end
 end
 
