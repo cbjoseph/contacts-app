@@ -49,5 +49,10 @@ class ContactsController < ApplicationController
     flash[:warning] = "Contact successfully deleted!"
     redirect_to '/contacts'
   end
+
+  # def all_johns
+  #   @contacts = Contact.all
+  #   render 'all_johns.html.erb'
+  # end
 end
 

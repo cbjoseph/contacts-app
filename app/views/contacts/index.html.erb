@@ -3,23 +3,27 @@
 <table class= "table table-striped">
 <thead>
   <tr>
-    <th>First name</th>
-    <th>Last name</th>
+   <!--  <th>First name</th>
+    <th>Last name</th> -->
+    <th>Full Name</th>
     <th>Email</th>
     <th>Phone Number</th>
     <th>View contact</th>
     <th>Edit contact</th>
+    <th>Created at</th>
     </tr>
     </thead>
     <tbody>
 <% @contacts.each do |contact|%>
 <tr>
-  <td><%= contact.first_name %></td>
-  <td><%= contact.last_name %></td>
+ <!--  <td><%= contact.first_name %></td>
+  <td><%= contact.last_name %></td> -->
+  <td><%= contact.full_name %></td>
   <td><%= contact.email %></td>
-  <td><%= contact.phone_number %></td>
+  <td><%= contact.prefix %></td>
   <td><a href="/contacts/<%=contact.id%>"> View just this contact </a></td>
   <td><a href="/contacts/<%=contact.id%>/edit"> Edit contact! </a></td>
+  <td><%= contact.friendly_created_at %></td>
   </tr>
 <% end %>
 </tbody>
