@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/contacts' => 'contacts#index'
-  get '/all_johns' => 'contacts#all_johns'
+  get '/all_johns' => 'contacts#find_all_johns'
   get '/contacts/new' => 'contacts#new'
   post '/contacts' => 'contacts#create'
   get '/contacts/:id' => 'contacts#show'

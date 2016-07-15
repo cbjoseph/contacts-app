@@ -3,9 +3,8 @@
 <table class= "table table-striped">
 <thead>
   <tr>
-   <!--  <th>First name</th>
-    <th>Last name</th> -->
     <th>Full Name</th>
+    <th>Bio</th>
     <th>Email</th>
     <th>Phone Number</th>
     <th>View contact</th>
@@ -16,9 +15,8 @@
     <tbody>
 <% @contacts.each do |contact|%>
 <tr>
- <!--  <td><%= contact.first_name %></td>
-  <td><%= contact.last_name %></td> -->
   <td><%= contact.full_name %></td>
+  <td><%= contact.bio %></td>
   <td><%= contact.email %></td>
   <td><%= contact.prefix %></td>
   <td><a href="/contacts/<%=contact.id%>"> View just this contact </a></td>

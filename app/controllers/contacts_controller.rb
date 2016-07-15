@@ -11,7 +11,10 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(
       first_name: params[:first_name],
+      middle_name: params[:middle_name],
       last_name: params[:last_name], 
+      bio: params[:bio],
+      # address: params[:address],
       email: params[:email],
       phone_number: params[:phone_number]
     )
@@ -35,7 +38,10 @@ class ContactsController < ApplicationController
 
     @contact.update(
       first_name: params[:first_name],
+      middle_name: params[:middle_name],
       last_name: params[:last_name], 
+      # address: params[:address],
+      bio: params[:bio],
       email: params[:email],
       phone_number: params[:phone_number]
     )
@@ -50,7 +56,7 @@ class ContactsController < ApplicationController
     redirect_to '/contacts'
   end
 
-  # def all_johns
+  # def find_all_johns
   #   @contacts = Contact.all
   #   render 'all_johns.html.erb'
   # end
