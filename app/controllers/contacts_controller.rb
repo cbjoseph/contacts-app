@@ -2,10 +2,14 @@ class ContactsController < ApplicationController
   def index
     if params[:search_terms]
       @contacts = Contact.where("first_name LIKE ?", "%#{params[:search_terms]}%")
-    else
+    elsif current_user
       @contacts = current_user.contacts
+      render 'index.html.erb'
+    else
+      flash[:warning] = "You need to login to view page"
+      redirect_to '/login'
     end
-    render 'index.html.erb'
+    
   end
 
   def new
