@@ -3,7 +3,7 @@ class ContactsController < ApplicationController
     if params[:search_terms]
       @contacts = Contact.where("first_name LIKE ?", "%#{params[:search_terms]}%")
     else
-      @contacts = Contact.all
+      @contacts = current_user.contacts
     end
     render 'index.html.erb'
   end
@@ -20,7 +20,8 @@ class ContactsController < ApplicationController
       bio: params[:bio],
       # address: params[:address],
       email: params[:email],
-      phone_number: params[:phone_number]
+      phone_number: params[:phone_number],
+      user_id: current_user.id
     )
     @contact.save 
     flash[:success] = "Contact successfully created!"
