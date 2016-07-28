@@ -5,6 +5,9 @@
 <p><%= @contact.bio %> </p>
 <p><%= @contact.email %> </p>
 <p><%= @contact.prefix %> </p>
+<% @contact.groups.each do |group| %>
+<p> Group: <%= group.name %> </p>
+<% end %>
 
 
 <div class="container">

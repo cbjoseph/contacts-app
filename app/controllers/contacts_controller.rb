@@ -2,17 +2,23 @@ class ContactsController < ApplicationController
   def index
     if params[:search_terms]
       @contacts = Contact.where("first_name LIKE ?", "%#{params[:search_terms]}%")
+      render 'index.html.erb'
     elsif current_user
-      @contacts = current_user.contacts
+      if params[:group]
+        current_group = Group.find_by(name: params[:group])
+        @contacts = current_group.contacts.where(user_id: current_user.id)
+      else
+        @contacts = current_user.contacts
+      end
       render 'index.html.erb'
     else
       flash[:warning] = "You need to login to view page"
       redirect_to '/login'
     end
-    
   end
 
   def new
+    @contact = Contact.new
     render 'new.html.erb'
   end
 
@@ -27,9 +33,12 @@ class ContactsController < ApplicationController
       phone_number: params[:phone_number],
       user_id: current_user.id
     )
-    @contact.save 
+    if @contact.save 
     flash[:success] = "Contact successfully created!"
     redirect_to "/contacts/#{@contact.id}"
+  else
+    render 'new.html.erb'
+  end
   end
 
   def show
@@ -45,7 +54,7 @@ class ContactsController < ApplicationController
   def update
     @contact = Contact.find_by(id: params[:id])
 
-    @contact.update(
+    if @contact.update(
       first_name: params[:first_name],
       middle_name: params[:middle_name],
       last_name: params[:last_name], 
@@ -54,8 +63,11 @@ class ContactsController < ApplicationController
       email: params[:email],
       phone_number: params[:phone_number]
     )
-    flash[:success] = "Contact successfully updated!"
-    redirect_to "/contacts/#{@contact.id}"
+      flash[:success] = "Contact successfully updated!"
+      redirect_to "/contacts/#{@contact.id}"
+    else
+      render 'edit.html.erb'
+    end
   end
 
   def destroy

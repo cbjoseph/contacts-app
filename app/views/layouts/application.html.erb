@@ -17,7 +17,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/socks">ForFeet</a>
+      <a class="navbar-brand" href="/contacts">ContactApp</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -27,9 +27,11 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Sort by price, low to high</a></li>
-            <li><a href="#">Sort by price, high to low</a></li>
-            <li><a href="#">Discount Items</a></li>
+          <% Group.all.each do |group| %>
+            <li><a href="/contacts?group=<%=group.name%>"><%=group.name%></a></li>
+            <% end %>
+            <li><a href="#">link</a></li>
+            <li><a href="#">links</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="/socks/random">Random Item!</a></li>
             <li role="separator" class="divider"></li>
